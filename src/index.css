@@ -1,0 +1,310 @@
+@import "tailwindcss";
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+  }
+  
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  
+  /* Performance optimizations */
+  .will-change-transform {
+    will-change: transform;
+  }
+  
+  .will-change-auto {
+    will-change: auto;
+  }
+  
+  /* Professional typography scale */
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+  
+  h1 { font-size: clamp(2rem, 5vw, 4rem); }
+  h2 { font-size: clamp(1.5rem, 4vw, 3rem); }
+  h3 { font-size: clamp(1.25rem, 3vw, 2rem); }
+  
+  p {
+    line-height: 1.7;
+    color: hsl(var(--muted-foreground));
+  }
+  
+  /* Enhanced accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+  
+  /* Professional focus states */
+  button:focus-visible,
+  a:focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 2px;
+  }
+  
+  body.dark,
+  .dark {
+    background-color: hsl(220 20% 8%);
+    color: hsl(45 15% 95%);
+  }
+
+  :root {
+    /* Dark catering-themed color palette */
+    --background: 220 20% 8%;
+    --foreground: 45 15% 95%;
+
+    --card: 220 15% 12%;
+    --card-foreground: 45 15% 95%;
+
+    --popover: 220 15% 12%;
+    --popover-foreground: 45 15% 95%;
+
+    --primary: 280 60% 70%; /* Purple/magenta - elegant */
+    --primary-foreground: 220 20% 8%;
+
+    --secondary: 220 10% 18%;
+    --secondary-foreground: 45 15% 95%;
+
+    --muted: 220 10% 15%;
+    --muted-foreground: 45 8% 65%;
+
+    --accent: 320 55% 65%; /* Pink accent - modern */
+    --accent-foreground: 220 20% 8%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 45 15% 95%;
+
+    --border: 220 10% 20%;
+    --input: 220 10% 18%;
+    --ring: 280 60% 70%;
+
+    --radius: 0.75rem;
+    
+    /* Custom design tokens for dark catering theme */
+    --gradient-primary: linear-gradient(135deg, hsl(280 60% 70%), hsl(320 55% 65%));
+    --gradient-secondary: linear-gradient(135deg, hsl(220 15% 15%), hsl(220 10% 25%));
+    --gradient-dark: linear-gradient(135deg, hsl(220 20% 8%), hsl(220 15% 12%), hsl(220 10% 18%));
+    --shadow-glow: 0 0 40px hsl(280 60% 70% / 0.15);
+    --shadow-elegant: 0 20px 40px -15px hsl(280 60% 70% / 0.25);
+    --shadow-dark: 0 8px 32px hsl(0 0% 0% / 0.3);
+    
+    /* Catering specific dark colors */
+    --gold: 45 85% 65%;
+    --gold-foreground: 220 20% 8%;
+    --purple: 280 60% 70%;
+    --purple-foreground: 220 20% 8%;
+    --pink: 320 55% 65%;
+    --pink-foreground: 220 20% 8%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+        --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer utilities {
+  /* Professional container with max-width constraints */
+  .container-responsive {
+    width: 100%;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  @media (min-width: 640px) {
+    .container-responsive {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .container-responsive {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+  
+  /* Professional text shadows */
+  .text-shadow-sm {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+  
+  .text-shadow-md {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  }
+  
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Glass morphism effects */
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .glass-dark {
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Professional gradients */
+  .gradient-primary {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+  }
+  
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  /* Enhanced hover states */
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Professional button styles */
+  .btn-primary {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    color: hsl(var(--primary-foreground));
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+  
+  .btn-primary:hover::before {
+    left: 100%;
+  }
+  
+  /* Responsive text utilities */
+  .text-responsive-xs { font-size: clamp(0.75rem, 2vw, 0.875rem); }
+  .text-responsive-sm { font-size: clamp(0.875rem, 2.5vw, 1rem); }
+  .text-responsive-base { font-size: clamp(1rem, 3vw, 1.125rem); }
+  .text-responsive-lg { font-size: clamp(1.125rem, 3.5vw, 1.25rem); }
+  .text-responsive-xl { font-size: clamp(1.25rem, 4vw, 1.5rem); }
+  .text-responsive-2xl { font-size: clamp(1.5rem, 5vw, 2rem); }
+  .text-responsive-3xl { font-size: clamp(2rem, 6vw, 3rem); }
+  .text-responsive-4xl { font-size: clamp(3rem, 8vw, 4rem); }
+}
+
+  .dark {
+    /* Enhanced dark mode for catering business */
+    --background: 220 20% 8%;
+    --foreground: 45 15% 95%;
+
+    --card: 220 15% 12%;
+    --card-foreground: 45 15% 95%;
+
+    --popover: 220 15% 12%;
+    --popover-foreground: 45 15% 95%;
+
+    --primary: 280 60% 70%;
+    --primary-foreground: 220 20% 8%;
+
+    --secondary: 220 10% 18%;
+    --secondary-foreground: 45 15% 95%;
+
+    --muted: 220 10% 15%;
+    --muted-foreground: 45 8% 65%;
+
+    --accent: 320 55% 65%;
+    --accent-foreground: 220 20% 8%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 45 15% 95%;
+
+    --border: 220 10% 20%;
+    --input: 220 10% 18%;
+    --ring: 280 60% 70%;
+    
+    --sidebar-background: 220 20% 8%;
+    --sidebar-foreground: 45 15% 95%;
+    --sidebar-primary: 280 60% 70%;
+    --sidebar-primary-foreground: 220 20% 8%;
+    --sidebar-accent: 220 10% 15%;
+    --sidebar-accent-foreground: 45 15% 95%;
+    --sidebar-border: 220 10% 15%;
+    --sidebar-ring: 280 60% 70%;
+  }
+
+/* Custom utility classes for catering theme */
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .shadow-warm {
+    box-shadow: var(--shadow-warm);
+  }
+  
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+}
