@@ -112,7 +112,7 @@ const HomePage = () => {
   }, [testimonials.length]);
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden relative">
+    <div className="min-h-screen bg-black text-white overflow-x-hidden w-full relative mt-12">
       {/* Dynamic Mouse Cursor Effect */}
       <motion.div
         className="fixed w-6 h-6 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full pointer-events-none z-50 mix-blend-difference"
@@ -213,7 +213,7 @@ const HomePage = () => {
         </motion.div>
 
         {/* Professional Branding Section with Horizontal Layout */}
-        <div className="relative z-20 px-4 max-w-7xl mx-auto">
+        <div className="relative z-20 w-full px-4 sm:px-6 lg:px-8 xl:px-12">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-28 items-center min-h-screen">
             
             {/* Left Side - Brand Identity */}
@@ -228,9 +228,9 @@ const HomePage = () => {
                 initial={{ scale: 0, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 1.2, delay: 0.4, type: "spring", stiffness: 100 }}
-                className="mb-6 lg:mb-8"
+                className="mb-2 lg:mb-8 "
               >
-                <div className="text-3xl md:text-4xl mb-4 drop-shadow-2xl">👨‍🍳</div>
+                <div className="text-3xl md:text-4xl drop-shadow-2xl">👨‍🍳</div>
               </motion.div>
 
               {/* MD Typography Animation */}
@@ -533,7 +533,7 @@ const HomePage = () => {
             backgroundSize: '100px 100px'
           }}></div>
         </div>
-        <div className="container mx-auto relative z-10">
+        <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -636,7 +636,7 @@ const HomePage = () => {
           transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
           className="absolute bottom-10 left-10 w-40 h-40 bg-gradient-to-r from-pink-500/10 to-purple-500/10 rounded-full blur-xl"
         />
-        <div className="container mx-auto relative z-10">
+        <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -652,7 +652,7 @@ const HomePage = () => {
             </p>
           </motion.div>
 
-          <div className="max-w-4xl mx-auto">
+          <div className="w-full">
             <motion.div
               key={activeTestimonial}
               initial={{ opacity: 0, scale: 0.8 }}
@@ -716,7 +716,7 @@ const HomePage = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="container mx-auto text-center"
+          className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 text-center"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
             आज ही संपर्क करें

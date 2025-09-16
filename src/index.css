@@ -3,10 +3,13 @@
 @layer base {
   * {
     border-color: hsl(var(--border));
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
   }
   
   html {
+    
     scroll-behavior: smooth;
     font-size: 16px;
   }
@@ -18,13 +21,15 @@
     font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
     margin: 0;
     padding: 0;
+   
     min-height: 100vh;
     line-height: 1.6;
+    overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
-  
+
   /* Performance optimizations */
   .will-change-transform {
     will-change: transform;
@@ -32,9 +37,7 @@
   
   .will-change-auto {
     will-change: auto;
-  }
-  
-  /* Professional typography scale */
+  }  /* Professional typography scale */
   h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
     font-weight: 700;
@@ -68,7 +71,7 @@
   
   body.dark,
   .dark {
-    background-color: hsl(220 20% 8%);
+   background-color: hsl(220 20% 8%);
     color: hsl(45 15% 95%);
   }
 

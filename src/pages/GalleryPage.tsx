@@ -7,6 +7,7 @@ const GalleryPage = () => {
   const [activeCategory, setActiveCategory] = useState("all");
   const [selectedMedia, setSelectedMedia] = useState<any>(null);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [imageLoadingStates, setImageLoadingStates] = useState<{[key: number]: boolean}>({});
 
   const categories = [
     { id: "all", label: "सभी", icon: "🎨", gradient: "from-purple-500 to-pink-500" },
@@ -17,26 +18,27 @@ const GalleryPage = () => {
     { id: "videos", label: "वीडियो", icon: "🎬", gradient: "from-red-500 to-purple-500" }
   ];
 
-  // Enhanced gallery data with proper image structure for easy replacement
+  // Enhanced gallery data with real images from public folder
   const galleryItems = [
-    { 
+     { 
       id: 1, 
       category: "wedding", 
       type: "image", 
-      title: "रॉयल वेडिंग डेकोरेशन", 
-      description: "शानदार फैब्रिक के साथ मंडप डिजाइन",
-      src: "/images/wedding1.jpg", // Ready for real images
-      alt: "रॉयल वेडिंग डेकोरेशन",
-      placeholder: "💒"
+      title: "मनोज जी का पोर्ट्रेट", 
+      description: "MD Celebrations के फाउंडर मनोज जी",
+      src: "/manoj.jpg",
+      alt: "मनोज जी का पोर्ट्रेट",
+      placeholder: "👨‍💼"
     },
+   
     { 
       id: 2, 
       category: "party", 
       type: "image", 
-      title: "बर्थडे पार्टी सेटअप", 
+      title: "एलिगेंट पार्टी सेटअप", 
       description: "रंगबिरंगी थीम के साथ खुशियों भरा माहौल",
-      src: "/images/party1.jpg",
-      alt: "बर्थडे पार्टी सेटअप",
+      src: "/m2.jpg",
+      alt: "एलिगेंट पार्टी सेटअप",
       placeholder: "🎉"
     },
     { 
@@ -45,7 +47,7 @@ const GalleryPage = () => {
       type: "image", 
       title: "कस्टम फैब्रिक आर्ट", 
       description: "हैंडमेड फैब्रिक डिजाइन की कलाकारी",
-      src: "/images/fabric1.jpg",
+      src: "/m3.jpg",
       alt: "कस्टम फैब्रिक आर्ट",
       placeholder: "🎭"
     },
@@ -55,7 +57,7 @@ const GalleryPage = () => {
       type: "image", 
       title: "कॉन्सर्ट स्टेज", 
       description: "प्रोफेशनल स्टेज और लाइटिंग सेटअप",
-      src: "/images/stage1.jpg",
+      src: "/m4.jpg",
       alt: "कॉन्सर्ट स्टेज",
       placeholder: "🎪"
     },
@@ -65,7 +67,7 @@ const GalleryPage = () => {
       type: "image", 
       title: "ट्रेडिशनल मंडप", 
       description: "पारंपरिक भारतीय स्टाइल में सजावट",
-      src: "/images/wedding2.jpg",
+      src: "/m5.jpg",
       alt: "ट्रेडिशनल मंडप",
       placeholder: "💒"
     },
@@ -75,7 +77,7 @@ const GalleryPage = () => {
       type: "image", 
       title: "कॉर्पोरेट इवेंट", 
       description: "एलिगेंट और प्रोफेशनल व्यवस्था",
-      src: "/images/party2.jpg",
+      src: "/m6.jpg",
       alt: "कॉर्पोरेट इवेंट",
       placeholder: "🎉"
     },
@@ -85,7 +87,7 @@ const GalleryPage = () => {
       type: "image", 
       title: "लग्जरी रिसेप्शन", 
       description: "शाही अंदाज में रिसेप्शन की व्यवस्था",
-      src: "/images/wedding3.jpg",
+      src: "/m8.jpg",
       alt: "लग्जरी रिसेप्शन",
       placeholder: "💒"
     },
@@ -95,7 +97,7 @@ const GalleryPage = () => {
       type: "image", 
       title: "फ्लोरल आर्ट", 
       description: "फूलों से बनी खूबसूरत कलाकृति",
-      src: "/images/fabric2.jpg",
+      src: "/m9.jpg",
       alt: "फ्लोरल आर्ट",
       placeholder: "🎭"
     },
@@ -103,43 +105,44 @@ const GalleryPage = () => {
       id: 9, 
       category: "stage", 
       type: "image", 
-      title: "फेस्टिवल स्टेज", 
-      description: "बड़े फेस्टिवल के लिए ग्रैंड स्टेज",
-      src: "/images/stage2.jpg",
-      alt: "फेस्टिवल स्टेज",
+      title: "ग्रैंड डेकोरेशन", 
+      description: "बड़े इवेंट के लिए ग्रैंड डेकोरेशन",
+      src: "/m11.jpg",
+      alt: "ग्रैंड डेकोरेशन",
       placeholder: "🎪"
     },
-    { 
+   
+     { 
       id: 10, 
-      category: "videos", 
-      type: "video", 
-      title: "वेडिंग हाइलाइट्स", 
-      description: "खूबसूरत शादी के पलों का वीडियो",
-      src: "/videos/wedding-highlight.mp4",
-      thumbnail: "/images/video-thumb1.jpg",
-      alt: "वेडिंग हाइलाइट्स वीडियो",
-      placeholder: "🎬"
+      category: "wedding", 
+      type: "image", 
+      title: "रॉयल वेडिंग डेकोरेशन", 
+      description: "शानदार फैब्रिक के साथ मंडप डिजाइन",
+      src: "/m1.jpg",
+      alt: "रॉयल वेडिंग डेकोरेशन",
+      placeholder: "💒"
     },
     { 
       id: 11, 
       category: "videos", 
       type: "video", 
-      title: "सेटअप टाइमलैप्स", 
-      description: "डेकोरेशन सेटअप की पूरी प्रक्रिया",
-      src: "/videos/setup-timelapse.mp4",
-      thumbnail: "/images/video-thumb2.jpg",
-      alt: "सेटअप टाइमलैप्स वीडियो",
+      title: "वेडिंग हाइलाइट्स", 
+      description: "खूबसूरत शादी के पलों का वीडियो",
+      src: "/mv3.mp4",
+      thumbnail: "/m1.jpg",
+      alt: "वेडिंग हाइलाइट्स वीडियो",
       placeholder: "🎬"
     },
     { 
       id: 12, 
-      category: "party", 
-      type: "image", 
-      title: "थीम पार्टी", 
-      description: "यूनीक थीम के साथ स्पेशल पार्टी",
-      src: "/images/party3.jpg",
-      alt: "थीम पार्टी",
-      placeholder: "🎉"
+      category: "videos", 
+      type: "video", 
+      title: "सेटअप टाइमलैप्स", 
+      description: "डेकोरेशन सेटअप की पूरी प्रक्रिया",
+      src: "/mv4.mp4",
+      thumbnail: "/m2.jpg",
+      alt: "सेटअप टाइमलैप्स वीडियो",
+      placeholder: "�"
     }
   ];
 
@@ -185,7 +188,7 @@ const GalleryPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 pt-20 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 pt-20 relative overflow-hidde mt-10">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -208,7 +211,7 @@ const GalleryPage = () => {
         />
       </div>
 
-      <div className="container mx-auto px-4 py-12 lg:py-20 relative z-10">
+      <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 py-12 lg:py-20 relative z-10">
         {/* Hero Section */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -298,21 +301,74 @@ const GalleryPage = () => {
                         item.category === "fabric" ? "from-blue-500/20 to-cyan-500/20" :
                         item.category === "stage" ? "from-green-500/20 to-emerald-500/20" :
                         "from-purple-500/20 to-pink-500/20"
-                      } flex items-center justify-center relative group-hover:scale-110 transition-transform duration-500`}>
+                      } flex items-center justify-center relative overflow-hidden`}>
                         
-                        {/* Image placeholder - Ready for real images */}
-                        {/* <img 
-                          src={item.src} 
-                          alt={item.alt}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                          onError={(e) => {
-                            // Fallback to placeholder if image fails to load
-                            e.currentTarget.style.display = 'none';
-                          }}
-                        /> */}
+                        {/* Real Images and Videos */}
+                        {item.type === "image" ? (
+                          <div className="w-full h-full relative">
+                            {imageLoadingStates[item.id] && (
+                              <div className="absolute inset-0 flex items-center justify-center bg-slate-700/50">
+                                <motion.div
+                                  animate={{ rotate: 360 }}
+                                  transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                                  className="w-8 h-8 border-2 border-purple-400 border-t-transparent rounded-full"
+                                />
+                              </div>
+                            )}
+                            <img 
+                              src={item.src} 
+                              alt={item.alt}
+                              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                              loading="lazy"
+                              onLoad={() => setImageLoadingStates(prev => ({...prev, [item.id]: false}))}
+                              onLoadStart={() => setImageLoadingStates(prev => ({...prev, [item.id]: true}))}
+                              onError={(e) => {
+                                // Fallback to placeholder if image fails to load
+                                const target = e.currentTarget as HTMLImageElement;
+                                target.style.display = 'none';
+                                setImageLoadingStates(prev => ({...prev, [item.id]: false}));
+                                if (target.nextElementSibling) {
+                                  (target.nextElementSibling as HTMLElement).style.display = 'flex';
+                                }
+                              }}
+                            />
+                          </div>
+                        ) : (
+                          <div className="w-full h-full relative">
+                            {imageLoadingStates[item.id] && (
+                              <div className="absolute inset-0 flex items-center justify-center bg-slate-700/50 z-10">
+                                <motion.div
+                                  animate={{ rotate: 360 }}
+                                  transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                                  className="w-8 h-8 border-2 border-purple-400 border-t-transparent rounded-full"
+                                />
+                              </div>
+                            )}
+                            <img 
+                              src={item.thumbnail} 
+                              alt={item.alt}
+                              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                              loading="lazy"
+                              onLoad={() => setImageLoadingStates(prev => ({...prev, [item.id]: false}))}
+                              onLoadStart={() => setImageLoadingStates(prev => ({...prev, [item.id]: true}))}
+                            />
+                            <motion.div 
+                              className="absolute inset-0 bg-black/40 flex items-center justify-center"
+                              whileHover={{ opacity: 0.8 }}
+                            >
+                              <motion.div 
+                                className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center"
+                                whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.3)" }}
+                                transition={{ duration: 0.2 }}
+                              >
+                                <div className="w-0 h-0 border-l-[12px] border-l-white border-y-[8px] border-y-transparent ml-1"></div>
+                              </motion.div>
+                            </motion.div>
+                          </div>
+                        )}
                         
-                        {/* Placeholder content */}
-                        <div className="text-center z-10">
+                        {/* Fallback placeholder content (hidden by default) */}
+                        <div className="text-center z-10 hidden">
                           <motion.div 
                             className="text-5xl lg:text-6xl mb-2"
                             animate={{ 
@@ -323,16 +379,6 @@ const GalleryPage = () => {
                           >
                             {item.placeholder}
                           </motion.div>
-                          {item.type === "video" && (
-                            <motion.div 
-                              className="absolute inset-0 bg-black/40 flex items-center justify-center"
-                              whileHover={{ opacity: 0.8 }}
-                            >
-                              <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                                <div className="w-0 h-0 border-l-[12px] border-l-white border-y-[8px] border-y-transparent ml-1"></div>
-                              </div>
-                            </motion.div>
-                          )}
                         </div>
                         
                         {/* Hover overlay */}
@@ -588,6 +634,116 @@ const GalleryPage = () => {
           </div>
         </motion.div>
       </div>
+
+      {/* Enhanced Lightbox Modal */}
+      <AnimatePresence>
+        {isLightboxOpen && selectedMedia && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-4"
+            onClick={closeLightbox}
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="relative max-w-7xl max-h-[90vh] w-full h-full flex items-center justify-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <motion.button
+                onClick={closeLightbox}
+                whileHover={{ scale: 1.1, rotate: 90 }}
+                whileTap={{ scale: 0.9 }}
+                className="absolute top-4 right-4 z-10 w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+              >
+                ✕
+              </motion.button>
+
+              {/* Content */}
+              <div className="w-full h-full flex flex-col lg:flex-row gap-6">
+                {/* Media Container */}
+                <div className="flex-1 flex items-center justify-center">
+                  {selectedMedia.type === "image" ? (
+                    <motion.img
+                      src={selectedMedia.src}
+                      alt={selectedMedia.alt}
+                      className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+                      initial={{ scale: 0.9 }}
+                      animate={{ scale: 1 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  ) : (
+                    <motion.video
+                      src={selectedMedia.src}
+                      controls
+                      autoPlay
+                      className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+                      initial={{ scale: 0.9 }}
+                      animate={{ scale: 1 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      आपका ब्राउज़र वीडियो प्लेबैक का समर्थन नहीं करता।
+                    </motion.video>
+                  )}
+                </div>
+
+                {/* Info Panel */}
+                <motion.div
+                  initial={{ x: 50, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                  className="lg:w-80 bg-slate-800/80 backdrop-blur-md rounded-lg p-6 border border-purple-500/30"
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="text-3xl">{selectedMedia.placeholder}</span>
+                    <div className="flex-1">
+                      <h3 className="text-xl font-bold text-white mb-1">
+                        {selectedMedia.title}
+                      </h3>
+                      <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-500/20 text-purple-300 border border-purple-500/30">
+                        {categories.find(cat => cat.id === selectedMedia.category)?.label}
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <p className="text-gray-300 leading-relaxed mb-6">
+                    {selectedMedia.description}
+                  </p>
+
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2 text-sm text-gray-400">
+                      <span>📁</span>
+                      <span>Type: {selectedMedia.type === "image" ? "फोटो" : "वीडियो"}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-gray-400">
+                      <span>🏷️</span>
+                      <span>Category: {categories.find(cat => cat.id === selectedMedia.category)?.label}</span>
+                    </div>
+                  </div>
+
+                  <motion.div
+                    className="mt-6 pt-6 border-t border-gray-600"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.4 }}
+                  >
+                    <Button
+                      onClick={closeLightbox}
+                      className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-3 rounded-full"
+                    >
+                      बंद करें
+                    </Button>
+                  </motion.div>
+                </motion.div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

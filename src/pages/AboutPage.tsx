@@ -33,7 +33,7 @@ const AboutPage = () => {
   ];
 
   return (
-    <div className="min-h-screen mt-12 bg-black text-white overflow-x-hidden">
+    <div className="min-h-screen mt-19 bg-black text-white overflow-x-hidden">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Animated Background */}
