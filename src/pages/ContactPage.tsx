@@ -119,7 +119,7 @@ const ContactPage = () => {
       
       // Open WhatsApp after successful submission
       setTimeout(() => {
-        window.open(`https://wa.me/919876543210?text=${encodedMessage}`, '_blank');
+        window.open(`https://wa.me/917470533001?text=${encodedMessage}`, '_blank');
       }, 1000);
       
     } catch (error) {
@@ -144,10 +144,10 @@ const ContactPage = () => {
     {
       icon: "📱",
       title: "फोन नंबर",
-      details: ["+91 98765 43210", "+91 87654 32109"],
+      details: ["+91 74705 33001", "+91 7489020205"],
       color: "from-blue-500 to-cyan-500",
       bgGradient: "from-blue-500/10 to-cyan-500/10",
-      action: () => window.open('tel:+919876543210')
+      action: () => window.open('tel:+917470533001')
     },
     {
       icon: "📧", 
@@ -565,7 +565,7 @@ const ContactPage = () => {
                   <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                     <Button 
                       className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold text-base lg:text-lg h-12 lg:h-14 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95"
-                      onClick={() => window.open('https://wa.me/919876543210?text=नमस्ते! मुझे MD Celebrations की सर्विस के बारे में जानकारी चाहिए।', '_blank')}
+                      onClick={() => window.open('https://wa.me/917470533001?text=नमस्ते! मुझे MD Celebrations की सर्विस के बारे में जानकारी चाहिए।', '_blank')}
                     >
                       <span className="mr-2 text-lg lg:text-xl">💬</span>
                       WhatsApp पर चैट करें

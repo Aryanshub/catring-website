@@ -113,9 +113,9 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden w-full relative mt-12">
-      {/* Dynamic Mouse Cursor Effect */}
+      {/* Dynamic Mouse Cursor Effect - Hidden on mobile */}
       <motion.div
-        className="fixed w-6 h-6 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full pointer-events-none z-50 mix-blend-difference"
+        className="fixed w-6 h-6 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full pointer-events-none z-50 mix-blend-difference hidden md:block"
         style={{
           left: mousePosition.x - 12,
           top: mousePosition.y - 12,
@@ -212,25 +212,25 @@ const HomePage = () => {
           ))}
         </motion.div>
 
-        {/* Professional Branding Section with Horizontal Layout */}
+        {/* Professional Branding Section with Responsive Layout */}
         <div className="relative z-20 w-full px-4 sm:px-6 lg:px-8 xl:px-12">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-28 items-center min-h-screen">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-28 items-center min-h-screen py-8 lg:py-0">
             
             {/* Left Side - Brand Identity */}
             <motion.div
               initial={{ x: -100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 1.2, delay: 0.2 }}
-              className="text-center lg:text-left"
+              className="text-center lg:text-left order-2 lg:order-1"
             >
               {/* Chef Icon */}
               <motion.div
                 initial={{ scale: 0, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 1.2, delay: 0.4, type: "spring", stiffness: 100 }}
-                className="mb-2 lg:mb-8 "
+                className="mb-3 sm:mb-4 lg:mb-8"
               >
-                <div className="text-3xl md:text-4xl drop-shadow-2xl">👨‍🍳</div>
+                <div className="text-2xl sm:text-3xl md:text-4xl drop-shadow-2xl">👨‍🍳</div>
               </motion.div>
 
               {/* MD Typography Animation */}
@@ -238,11 +238,11 @@ const HomePage = () => {
                 initial={{ y: 50, opacity: 0, scale: 0.8 }}
                 animate={{ y: 0, opacity: 1, scale: 1 }}
                 transition={{ duration: 1.2, delay: 0.6, type: "spring" }}
-                className="mb-8"
+                className="mb-4 sm:mb-6 lg:mb-8"
               >
-                <div className="flex items-center justify-center lg:justify-start gap-4 mb-4">
+                <div className="flex items-center justify-center lg:justify-start gap-2 sm:gap-3 lg:gap-4 mb-2 sm:mb-3 lg:mb-4">
                   <motion.span 
-                    className="text-3xl md:text-4xl lg:text-5xl font-black bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
+                    className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
                     animate={{
                       textShadow: [
                         "0 0 20px rgba(168, 85, 247, 0.5)",
@@ -258,7 +258,7 @@ const HomePage = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.8, duration: 1 }}
-                    className="text-xl md:text-2xl font-bold text-yellow-400"
+                    className="text-lg sm:text-xl md:text-2xl font-bold text-yellow-400"
                   >
                     <motion.span
                       animate={{ 
@@ -276,7 +276,7 @@ const HomePage = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.0, duration: 1 }}
-                  className="text-xl md:text-2xl lg:text-3xl font-bold mb-4 bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent"
+                  className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-2 sm:mb-3 lg:mb-4 bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent"
                 >
                   CELEBRATIONS
                 </motion.h1>
@@ -285,7 +285,7 @@ const HomePage = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.2, duration: 1 }}
-                  className="text-sm md:text-base lg:text-lg text-cyan-400 font-medium italic mb-3"
+                  className="text-xs sm:text-sm md:text-base lg:text-lg text-cyan-400 font-medium italic mb-2 sm:mb-3"
                 >
                   Where Every Plate Tells a Story
                 </motion.div>
@@ -294,7 +294,7 @@ const HomePage = () => {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 1.4, duration: 1 }}
-                  className="text-xs md:text-sm text-gray-400"
+                  className="text-xs sm:text-sm text-gray-400"
                 >
                   - Manoj Dagriya
                 </motion.div>
@@ -305,7 +305,7 @@ const HomePage = () => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 1.6, duration: 1 }}
-                className="space-y-4 mb-10"
+                className="space-y-2 sm:space-y-3 lg:space-y-4 mb-6 sm:mb-8 lg:mb-10"
               >
                 {/* First Line with Typography Style */}
                 <motion.div 
@@ -314,7 +314,7 @@ const HomePage = () => {
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <motion.p 
-                    className="text-lg md:text-xl lg:text-2xl font-black text-center lg:text-left leading-tight"
+                    className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-black text-center lg:text-left leading-tight"
                     animate={{
                       backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
                     }}
@@ -360,7 +360,7 @@ const HomePage = () => {
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <motion.p 
-                    className="text-base md:text-lg lg:text-xl font-bold text-center lg:text-left leading-relaxed max-w-2xl"
+                    className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-center lg:text-left leading-relaxed max-w-full sm:max-w-lg lg:max-w-2xl mx-auto lg:mx-0"
                     style={{
                       background: "linear-gradient(90deg, #d1d5db, #d1d5db)",
                       WebkitBackgroundClip: "text",
@@ -419,14 +419,14 @@ const HomePage = () => {
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 1, delay: 1.8 }}
-                className="flex flex-col sm:flex-row gap-4 lg:gap-6 justify-center lg:justify-start items-center"
+                className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6 justify-center lg:justify-start items-center"
               >
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}
                   className="w-full sm:w-auto"
                 >
-                  <Button asChild size="lg" className="w-full sm:w-auto bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 hover:from-purple-700 hover:to-pink-700 text-white text-sm md:text-base px-6 md:px-8 py-2 md:py-3 rounded-full shadow-xl border border-yellow-400/40 relative overflow-hidden group transition-all duration-300">
+                  <Button asChild size="lg" className="w-full sm:w-auto bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 hover:from-purple-700 hover:to-pink-700 text-white text-xs sm:text-sm md:text-base px-4 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 rounded-full shadow-xl border border-yellow-400/40 relative overflow-hidden group transition-all duration-300">
                     <Link to="/services" className="relative z-10 flex items-center gap-2">
                       <span>🔥 BOOK करें अभी</span>
                       <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/10 to-orange-400/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500"></div>
@@ -439,7 +439,7 @@ const HomePage = () => {
                   whileTap={{ scale: 0.98 }}
                   className="w-full sm:w-auto"
                 >
-                  <Button asChild variant="outline" size="lg" className="w-full sm:w-auto border border-cyan-400 text-cyan-300 hover:bg-cyan-400 hover:text-black text-sm md:text-base px-6 md:px-8 py-2 md:py-3 rounded-full backdrop-blur-sm bg-white/5 shadow-xl transition-all duration-300">
+                  <Button asChild variant="outline" size="lg" className="w-full sm:w-auto border border-cyan-400 text-cyan-300 hover:bg-cyan-400 hover:text-black text-xs sm:text-sm md:text-base px-4 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 rounded-full backdrop-blur-sm bg-white/5 shadow-xl transition-all duration-300">
                     <Link to="/contact" className="flex items-center gap-2">📞 CALL करें</Link>
                   </Button>
                 </motion.div>
@@ -451,9 +451,9 @@ const HomePage = () => {
               initial={{ x: 100, opacity: 0 }}
               animate={isInView ? { x: 0, opacity: 1 } : {}}
               transition={{ duration: 1, delay: 2.0 }}
-              className="flex items-center justify-center"
+              className="flex items-center justify-center order-1 lg:order-2"
             >
-              <div className="grid grid-cols-2 gap-6 md:gap-8 max-w-lg w-full">
+              <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6 lg:gap-8 max-w-xs sm:max-w-sm lg:max-w-lg w-full">
                 {stats.map((stat, index) => (
                   <motion.div
                     key={index}
@@ -463,11 +463,11 @@ const HomePage = () => {
                     whileHover={{ scale: 1.1, y: -10, rotateY: 10 }}
                     className="relative group cursor-pointer perspective-1000"
                   >
-                    <div className={`bg-gradient-to-br ${stat.color} p-6 md:p-8 rounded-2xl shadow-2xl border border-white/20 backdrop-blur-sm relative overflow-hidden h-full transition-all duration-500 transform-style-preserve-3d`}>
+                    <div className={`bg-gradient-to-br ${stat.color} p-3 sm:p-4 md:p-6 lg:p-8 rounded-xl lg:rounded-2xl shadow-xl lg:shadow-2xl border border-white/20 backdrop-blur-sm relative overflow-hidden h-full transition-all duration-500 transform-style-preserve-3d`}>
                       <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
                       <div className="relative z-10 text-center">
                         <motion.div 
-                          className="text-4xl md:text-5xl mb-3"
+                          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-1 sm:mb-2 lg:mb-3"
                           animate={{
                             scale: [1, 1.1, 1],
                             rotate: [0, 5, 0, -5, 0]
@@ -476,8 +476,8 @@ const HomePage = () => {
                         >
                           {stat.icon}
                         </motion.div>
-                        <div className="text-2xl md:text-3xl font-black text-white mb-2">{stat.number}</div>
-                        <div className="text-sm md:text-base text-white/90 font-medium leading-tight">{stat.label}</div>
+                        <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-black text-white mb-1 sm:mb-2">{stat.number}</div>
+                        <div className="text-xs sm:text-sm md:text-base text-white/90 font-medium leading-tight">{stat.label}</div>
                       </div>
                       
                       {/* Sparkle effects */}
@@ -492,7 +492,7 @@ const HomePage = () => {
                           repeat: Infinity,
                           delay: index * 0.4 + 1
                         }}
-                        className="absolute top-2 right-2 text-yellow-300 text-lg"
+                        className="absolute top-1 sm:top-2 right-1 sm:right-2 text-yellow-300 text-sm sm:text-base lg:text-lg"
                       >
                         ✨
                       </motion.div>
